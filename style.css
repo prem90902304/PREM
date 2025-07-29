@@ -24,7 +24,7 @@ body {
 .button-container {
   position: relative;
   width: 300px;
-  height: 120px;
+  height: 150px;
   margin: 0 auto;
 }
 
@@ -37,40 +37,48 @@ body {
   cursor: pointer;
   background-color: #ff6b81;
   color: white;
-  transition: transform 0.3s;
+  transition: transform 0.3s, background-color 0.3s;
   z-index: 2;
+  min-width: 100px;
+  max-width: 120px;
 }
 
 .btn:hover {
   background-color: #ff4757;
 }
 
+/* Yes button starts at center, will move */
 .yes-btn {
-  left: 54%;
+  left: 50%;
   top: 20%;
   transform: translate(-50%, -50%);
 }
 
+/* No button stays in place */
 .no-btn {
-  right: 54%;
-  top: 60%;
-  transform: translate(50%, -50%);
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 0%);
 }
 
+/* Result container for success page */
 .result-container {
   display: none;
   flex-direction: column;
   align-items: center;
 }
 
-.local-gif, .gif-result {
+/* Videos and GIFs */
+.local-gif,
+.gif-result {
   width: 300px;
   max-width: 90%;
   border-radius: 20px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
-.timeout-message {
+/* Timeout auto-message style */
+#timeout-message {
   display: none;
   position: fixed;
   top: 20%;
@@ -86,3 +94,4 @@ body {
   z-index: 999;
   text-align: center;
 }
+
