@@ -6,11 +6,10 @@
   <title>Do you love me? | @coding.pixel</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
   <div class="question-container container">
     <video class="local-gif" src="Reply me love.mp4" autoplay muted loop playsinline></video>
     <h2 class="question">Do you love me?</h2>
@@ -21,12 +20,26 @@
   </div>
 
   <div class="result-container container">
-    <video class="gif-result" src="Love me.gif" autoplay loop playsinline></video>
+    <img class="gif-result" src="Love me.gif" alt="Love GIF" />
     <h2>I knew it!</h2>
   </div>
 
-  <!-- Prompt message -->
-  <div id="timeout-message" class="timeout-message">
+  <!-- Timed message -->
+  <div id="timeout-message" style="
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffe6e9;
+    border: 2px solid #ff6b81;
+    border-radius: 15px;
+    padding: 20px 30px;
+    font-size: 1.6rem;
+    color: #d63c63;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    z-index: 999;
+    text-align: center;">
     I knew it, you don't have love 💔
   </div>
 
