@@ -1,28 +1,28 @@
-const questionContainer = document.querySelector(".question-container");
-const resultContainer = document.querySelector(".result-container");
-const gifResult = document.querySelector(".gif-result");
-const heartLoader = document.querySelector(".cssload-main");
-const yesBtn = document.querySelector(".js-yes-btn");
-const noBtn = document.querySelector(".js-no-btn");
+document.addEventListener("DOMContentLoaded", () => {
+  const yesBtn = document.querySelector(".js-yes-btn");
+  const noBtn = document.querySelector(".js-no-btn");
+  const questionContainer = document.querySelector(".question-container");
+  const resultContainer = document.querySelector(".result-container");
 
-// /change the postion of no button
-noBtn.addEventListener("mouseover", () => {
-  const newX = Math.floor(Math.random() * questionContainer.offsetWidth);
-  const newY = Math.floor(Math.random() * questionContainer.offsetWidth);
+  // Show question section on load
+  questionContainer.classList.add("active");
 
-  noBtn.style.left = `${newX}px`;
-  noBtn.style.top = `${newY}px`;
-});
+  // When Yes is clicked
+  yesBtn.addEventListener("click", () => {
+    questionContainer.classList.remove("active");
+    resultContainer.classList.add("active");
+  });
 
-// yes button functionality
+  // Move Yes button on hover
+  yesBtn.addEventListener("mouseover", () => {
+    const container = document.querySelector(".button-container");
+    const maxX = container.offsetWidth - yesBtn.offsetWidth;
+    const maxY = container.offsetHeight - yesBtn.offsetHeight;
 
-yesBtn.addEventListener("click", () => {
-  questionContainer.style.display = "none";
-  heartLoader.style.display = "inherit";
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
 
-  const timeoutId = setTimeout(() => {
-    heartLoader.style.display = "none";
-    resultContainer.style.display = "inherit";
-    gifResult.play();
-  }, 3000);
+    yesBtn.style.left = `${randomX}px`;
+    yesBtn.style.top = `${randomY}px`;
+  });
 });
