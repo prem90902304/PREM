@@ -12,18 +12,17 @@ document.addEventListener("DOMContentLoaded", () => {
   let autoRevealTimeout;
 
   function showResult(message) {
+    clearTimeout(autoRevealTimeout);
     questionContainer.style.display = "none";
     resultHeading.textContent = message;
     resultContainer.style.display = "flex";
   }
 
   yesBtn.addEventListener("click", () => {
-    clearTimeout(autoRevealTimeout);
     showResult("I knew it!");
   });
 
   noBtn.addEventListener("click", () => {
-    clearTimeout(autoRevealTimeout);
     showResult("😢 So sad... but okay.");
   });
 
@@ -51,13 +50,14 @@ document.addEventListener("DOMContentLoaded", () => {
     moveYesButton();
   });
 
-// Show message after 10s, hide after 2s
-setTimeout(() => {
-  const message = document.getElementById("timeout-message");
-  if (message) {
-    message.style.display = "block";
-    setTimeout(() => {
-      message.style.display = "none";
-    }, 2000);
-  }
-}, 10000);
+  // ⏳ Auto show "no love" message after 10s, disappear after 2s
+  autoRevealTimeout = setTimeout(() => {
+    const message = document.getElementById("timeout-message");
+    if (message && questionContainer.style.display !== "none") {
+      message.style.display = "block";
+      setTimeout(() => {
+        message.style.display = "none";
+      }, 2000);
+    }
+  }, 10000);
+});
