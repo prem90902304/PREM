@@ -4,24 +4,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const questionContainer = document.querySelector(".question-container");
   const resultContainer = document.querySelector(".result-container");
 
-  // Show question section on load
-  questionContainer.classList.add("active");
+  // Show the question screen
+  questionContainer.style.display = "block";
+  resultContainer.style.display = "none";
 
-  // When Yes is clicked
+  // YES button click → Show result
   yesBtn.addEventListener("click", () => {
-    questionContainer.classList.remove("active");
-    resultContainer.classList.add("active");
+    questionContainer.style.display = "none";
+    resultContainer.style.display = "block";
   });
 
-  // Move Yes button on hover
-  yesBtn.addEventListener("mouseover", () => {
+  // Move YES button randomly on hover
+  yesBtn.addEventListener("mouseenter", () => {
     const container = document.querySelector(".button-container");
     const maxX = container.offsetWidth - yesBtn.offsetWidth;
     const maxY = container.offsetHeight - yesBtn.offsetHeight;
 
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
 
+    yesBtn.style.position = "absolute";
     yesBtn.style.left = `${randomX}px`;
     yesBtn.style.top = `${randomY}px`;
   });
